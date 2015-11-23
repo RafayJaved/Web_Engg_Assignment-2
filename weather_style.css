@@ -1,0 +1,78 @@
+			
+	
+	
+	#weather{
+		
+			margin: 5px;
+			padding: 15px;
+			width: 25%;
+			height: 50%;
+			position:absolute;
+			left:66%;
+			top:38%;
+			background-size: 100% 100%;
+			background-repeat:no-repeat;
+			background-image: url("weather_dash.jpg");
+			border-width:5px;
+			border-style:solid;
+			border-bottom-color:#aaa;
+			border-right-color:#aaa;
+			border-top-color:#ddd;
+			border-left-color:#ddd;
+			border-radius:50px;
+		    box-shadow: 10px 10px 5px #888888;
+			-moz-border-radius:50px;
+			-webkit-border-radius:50px;
+		}
+	
+		
+	
+	#big_weather{
+			background: url(background_weather.jpg);
+			background-size: 100% 100%;
+			background-repeat:no-repeat;
+			position: absolute;
+			width: 0%;
+        	height: 0%;
+			top: 0%;
+        	left: 0%;
+			z-index:10;
+			-webkit-transition: width 1s, height 1s, margin 1s;
+			-moz-transition: width 1s, height 1s, margin 1s;
+			-ms-transition: width 1s, height 1s, margin 1s;
+			transition: width 1s, height 1s, margin 1s;
+		}
+		
+	#wea1{
+		
+		position:relative;
+		top: 20%;
+        left: 34%;
+		height: 75px;
+		width: 400px; 
+		padding: 20px;
+		background-color: black; 
+		opacity:0.5;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 7px; 
+		border-radius: 7px;
+		display:none;
+
+
+
+	}
+	
+	#wea2{
+		position:relative;
+		top: 30%;
+        left: 15%;
+		height: 250px;
+		width: 1000px; 
+		padding: 20px;
+		background-color: black; 
+		opacity:0.5;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 7px; 
+		border-radius: 7px;
+		display:none;
+	}

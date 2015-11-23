@@ -1,0 +1,94 @@
+
+<html>
+  <head>
+  
+	<link rel="stylesheet" type="text/css" href="clock_style.css" />
+	<link rel="stylesheet" type="text/css" href="weather_style.css" />
+	<link rel="stylesheet" type="text/css" href="calender_style.css" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+	<script type="text/javascript" src="calender_script.js"></script>
+	<script type="text/javascript" src="weather_script.js"></script>
+
+  </head>
+  <body>
+      <div id="main" ng-app="myApp" ng-controller="SelectCtrl">
+	  
+			<img src="DashBoard.png" alt="Smiley face" height="20%" width="50%" style="position:relative; left:25%;">
+	
+		
+	  
+			<div id="clock" ></div>
+				<div id="sec"></div>
+				<div id="hour"></div>
+				<div id="min"></div>
+			<div id="calendar" class="divcalendar" style="position:absolute; width:27%; height:50%; bottom:6%; left:35%;" onclick = div_grow3()>
+				<div id="calendaroverallcontrols">
+				<br>
+				<div id="calendarmonthcontrols">
+					<a id="btnPrev" href="#" title="Previous Month"><span><</span></a>
+					<div id="monthandyear"></div>
+					<a id="btnNext" href="#" title="Next Month"><span>></span></a>
+
+				</div>
+				</div>
+
+				<div id="divcalendartable"></div>
+			</div>
+		
+			<div id="weather" >
+			
+				<h1 style="position:absolute; top:43%; left:30%;" >{{result.results.channel.item.condition.temp}} F</h1>
+				<h1 style="position:absolute; top:60%; left:15%;" >{{result.results.channel.item.condition.text}}</h1>
+				
+			</div>
+	  
+			<div id="big_clock">
+	  
+			<div id="clock1" >
+				<div id="sec1"></div>
+				<div id="hour1"></div>
+				<div id="min1"></div>
+			</div>
+	
+			<img id="btn1" src="cross.png" style="postion:absolute; top:0; float:right; height:30px; width:30px;">
+
+
+			</div>
+	  
+		<div id="big_weather">
+	  
+		<div id="wea1">
+			<h1 style="position:absolute; top:0%; left:5%; opacity:1;"  >Islamabad</h1>
+			<h1 style="position:absolute; top:45%; left:35%; opacity:1;" >{{result.results.channel.item.condition.temp}} F {{result.results.channel.item.condition.text}}</h1>
+		</div>
+		<div id="wea2">
+			<h1 style="position:absolute; top:0%; left:5%; opacity:1;"  >{{result.results.channel.item.forecast[0].day}}  High:{{result.results.channel.item.forecast[0].high}}F  Low:{{result.results.channel.item.forecast[0].low}}F  Condition:{{result.results.channel.item.forecast[0].text}}</h1>
+			<h1 style="position:absolute; top:18%; left:5%; opacity:1;"  >{{result.results.channel.item.forecast[1].day}}  High:{{result.results.channel.item.forecast[1].high}}F  Low:{{result.results.channel.item.forecast[1].low}}F  Condition:{{result.results.channel.item.forecast[1].text}}</h1>
+			<h1 style="position:absolute; top:38%; left:5%; opacity:1;"  >{{result.results.channel.item.forecast[2].day}}  High:{{result.results.channel.item.forecast[2].high}}F  Low:{{result.results.channel.item.forecast[2].low}}F  Condition:{{result.results.channel.item.forecast[2].text}}</h1>
+			<h1 style="position:absolute; top:58%; left:5%; opacity:1;"  >{{result.results.channel.item.forecast[3].day}}  High:{{result.results.channel.item.forecast[3].high}}F  Low:{{result.results.channel.item.forecast[3].low}}F  Condition:{{result.results.channel.item.forecast[3].text}}</h1>
+			<h1 style="position:absolute; top:78%; left:5%; opacity:1;"  >{{result.results.channel.item.forecast[4].day}}  High:{{result.results.channel.item.forecast[4].high}}F  Low:{{result.results.channel.item.forecast[4].low}}F  Condition:{{result.results.channel.item.forecast[4].text}}</h1>
+
+		</div>
+		<img id="btn2" src="cross.png" style="postion:absolute; left:100%; top:0%; float:right; height:30px; width:30px;" onclick = back_dash3()>
+
+		
+	  </div>
+			<div style="z-index:1000;">
+					<img id="btn3" src="cross.png" style=" display:none; postion:absolute; left:100%; top:0%; float:right; height:30px; width:30px;" onclick = back_dash3()>
+
+			</div>
+
+		<script type="text/javascript" src="weather_script.js"></script>
+		<script type="text/javascript" src="clock_script.js"></script>
+	    <script>
+		
+		var app = angular.module('myApp', []);
+		app.controller('SelectCtrl', function($scope, $http) {
+		$http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(2211027)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")
+		.success(function(response) {$scope.result = response.query;});
+		});
+        </script>
+  </body>
+</html>
+
